@@ -7,23 +7,23 @@ use App\Http\Requests\EditRequest;
 use App\Student as StudentEloquent;
 use View;
 use Validator;
+use Auth;
 
 class SchoolController extends Controller
 {
-    public function edit($student_no){
-        $student = StudentEloquent::where('no',$student_no)->firstOrFail();
-        return View::make('edit',compact('student'));
+    public function edit(){
+        // $student_no
+        // $student = StudentEloquent::where('no',$student_no)->firstOrFail();
+        return View::make('edit');
     }
 
-    public function update($student_no,EditRequest $request){
-        $student = StudentEloquent::where('no',$student_no)->firstOrFail();
-        $student->tel = $request->tel;
-        $student->user->name = $request->name;
-        $student->user->save();
-        $student->save();
+    public function update(EditRequest $request){
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->student->tel = $request->tel;
+        $user->student->save();
 
         return View::make('edit',[
-            'student'=>$student,
             'msg'=>'修改成功'
         ]);
     }

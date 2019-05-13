@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index');
-
 #正則學號
 Route::pattern('student_no' , 's[0-9]{10}');
 
@@ -42,6 +41,12 @@ Route::group(['namespace'=>'Cool'],function(){
 #資源控制器 一樣要載東西  目前不會用到 但第13 14章會用到
 Route::resource('photos', 'PhotosController');
 
-#編輯資訊的路由 給SchoolController處理
-Route::get('edit/{student_no}','SchoolController@edit');
-Route::post('edit/{student_no}','SchoolController@update');
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('edit','SchoolController@edit');
+    Route::post('edit','SchoolController@update');
+});
+
+#我們要來自製鷹架
+Route::get('login','AuthController@getLogin');
+Route::post('login','AuthController@postLogin');
+Route::get('logout','AuthController@getLogout');

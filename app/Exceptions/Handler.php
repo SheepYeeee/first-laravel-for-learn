@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+Use Log;
 
 class Handler extends ExceptionHandler
 {
@@ -34,6 +35,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        Log::alert( "使用者造成了 " . get_class($exception) . " 例外" );
         parent::report($exception);
     }
 

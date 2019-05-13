@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">排行榜</div>
-                <div class="card-body p-1">
+                <div class="card-header" style="background:#fff;color:#000;text-align:center;">
+                <h3 class="m-0" >排行榜</h3></div>
+                <div class="card-body p-0">
                     <table class="table table-hover m-0">
                         <thead class="thead-dark">
                             <tr>
@@ -33,9 +34,6 @@
                                     <td>
                                         <a href="{{ route('students',['student_no' => $score->student->no]) }}" class="btn btn-info btn-sm">
                                             查看
-                                        </a>
-                                        <a href="{{ action('SchoolController@edit',['student_no' => $score->student->no]) }}" class="btn btn-success btn-sm">
-                                            編輯
                                         </a>
                                     </td>
                                 </tr>

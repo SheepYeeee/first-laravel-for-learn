@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="m-0">編輯個人資料</h4>
+                <div class="card-header" style="background:#fff;color:#000;text-align:center;">
+                    <h3 class="m-0">編輯個人資料</h3>
                 </div>
                 <div class="card-body">
                     @isset($msg)
@@ -17,15 +17,15 @@
                             </button>
                         </div>
                     @endisset
-                    <form action="{{ action('SchoolController@update',['student_no'=>$student->no]) }}" method="POST">
+                    <form action="{{ action('SchoolController@update') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>信箱</label>
-                            <input type="email" class="form-control" name="email" value="{{ $student->user->email }}" disabled>
+                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="name">姓名：</label>
-                            <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ $student->user->name }}">
+                            <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ Auth::user()->name }}">
                             @if ($errors->has('name'))
                                 <div class="invalid-feedback">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tel">電話：</label>
-                            <input type="text" class="form-control {{ $errors->has('tel') ? 'is-invalid' : '' }}" name="tel" value="{{ $student->tel }}">
+                            <input type="text" class="form-control {{ $errors->has('tel') ? 'is-invalid' : '' }}" name="tel" value="{{ Auth::user()->student->tel }}">
                             @if ($errors->has('tel'))
                                 <div class="invalid-feedback">
                                     <strong>{{ $errors->first('tel') }}</strong>
