@@ -22,6 +22,7 @@ class SchoolController extends Controller
         $user->name = $request->name;
         $user->student->tel = $request->tel;
         $user->student->save();
+        $user->save();
 
         return View::make('edit',[
             'msg'=>'修改成功'

@@ -8,7 +8,7 @@
                 <div class="card-header" style="background:#fff;color:#000;text-align:center;">
                     <h3 class="m-0">該頁面已經遺失了</h3>
                 </div>
-                <div class="card-body p-20" style="font-size:70px;color:#bebebe;">
+                <div class="card-body p-20" style="font-size:70px;">
                     <h1 style="font-size:70px;" class="animated jackInTheBox ">404 NOT FOUND</h1>
                 </div>
             </div>

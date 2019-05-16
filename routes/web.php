@@ -50,3 +50,21 @@ Route::group(['middleware'=>'auth'],function(){
 Route::get('login','AuthController@getLogin');
 Route::post('login','AuthController@postLogin');
 Route::get('logout','AuthController@getLogout');
+
+#寄信的
+Route::get('mail','MailController@send');
+
+#carbon 時間處理跟轉換的
+Route::get('carbon','CarbonController@index');
+
+#Captcha 我不是機器人的那個東東
+Route::get('captcha','CaptchaController@index');
+Route::post('captcha','CaptchaController@captcha');
+
+#網站支援的語系
+Route::get('hello',function(){
+    if(Request::has('lang')){
+        App::setlocale(Request::get('lang'));
+    }
+    return view('hello');
+});
